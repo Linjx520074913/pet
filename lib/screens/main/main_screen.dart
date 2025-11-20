@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import 'optimized_dashboard_screen.dart';
-import 'home_screen.dart';
+import '../records/records_screen.dart';
 import '../messages/messages_screen.dart';
 import '../profile/profile_screen.dart';
 
@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const OptimizedDashboardScreen(),
-    const HomeScreen(),
+    const RecordsScreen(),
     const MessagesScreen(),
     const ProfileScreen(),
   ];
@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _buildNavItem(Icons.dashboard_outlined, Icons.dashboard, 'Dashboard', 0),
-                _buildNavItem(Icons.explore_outlined, Icons.explore, 'Discover', 1),
+                _buildNavItem(Icons.article_outlined, Icons.article, 'Records', 1),
                 _buildNavItem(Icons.chat_bubble_outline, Icons.chat_bubble, 'Messages', 2),
                 _buildNavItem(Icons.person_outline, Icons.person, 'Profile', 3),
               ],
