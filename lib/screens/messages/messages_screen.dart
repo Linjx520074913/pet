@@ -9,28 +9,28 @@ class MessagesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final chats = [
       ChatPreview(
-        name: 'Sarah Wilson',
+        name: '张小美',
         petName: 'Max',
-        lastMessage: 'That sounds great! See you tomorrow',
-        time: '2m ago',
+        lastMessage: '好的，明天见！',
+        time: '2分钟前',
         unreadCount: 2,
         avatar: Icons.person,
         isOnline: true,
       ),
       ChatPreview(
-        name: 'Mike Johnson',
+        name: '李明',
         petName: 'Luna',
-        lastMessage: 'Thanks for the recommendation!',
-        time: '1h ago',
+        lastMessage: '谢谢你的推荐！',
+        time: '1小时前',
         unreadCount: 0,
         avatar: Icons.person,
         isOnline: false,
       ),
       ChatPreview(
-        name: 'Emily Chen',
+        name: '王芳',
         petName: 'Charlie',
-        lastMessage: 'My dog loved the park!',
-        time: '3h ago',
+        lastMessage: '我家狗狗超喜欢那个公园！',
+        time: '3小时前',
         unreadCount: 1,
         avatar: Icons.person,
         isOnline: true,
@@ -40,7 +40,7 @@ class MessagesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('Messages'),
+        title: const Text('消息'),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),

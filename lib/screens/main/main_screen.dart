@@ -44,10 +44,10 @@ class _MainScreenState extends State<MainScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildNavItem(Icons.dashboard_outlined, Icons.dashboard, 'Dashboard', 0),
-                _buildNavItem(Icons.article_outlined, Icons.article, 'Records', 1),
-                _buildNavItem(Icons.chat_bubble_outline, Icons.chat_bubble, 'Messages', 2),
-                _buildNavItem(Icons.person_outline, Icons.person, 'Profile', 3),
+                _buildNavItem(Icons.dashboard_outlined, Icons.dashboard, '首页', 0),
+                _buildNavItem(Icons.article_outlined, Icons.article, '记录', 1),
+                _buildNavItem(Icons.chat_bubble_outline, Icons.chat_bubble, '消息', 2),
+                _buildNavItem(Icons.person_outline, Icons.person, '我的', 3),
               ],
             ),
           ),

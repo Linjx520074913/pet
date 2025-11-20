@@ -11,7 +11,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Text('我的'),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
@@ -57,7 +57,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             const Text(
-              'John Doe',
+              '李明',
               style: TextStyle(
                 color: AppColors.textPrimary,
                 fontSize: 24,
@@ -66,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             const Text(
-              'San Francisco, CA',
+              '北京市 · 朝阳区',
               style: TextStyle(
                 color: AppColors.textSecondary,
                 fontSize: 14,
@@ -77,42 +77,42 @@ class ProfileScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildStat('Matches', '42'),
+                _buildStat('宠物数量', '2'),
                 Container(
                   width: 1,
                   height: 40,
                   color: AppColors.divider,
                 ),
-                _buildStat('Playdates', '18'),
+                _buildStat('记录天数', '128'),
                 Container(
                   width: 1,
                   height: 40,
                   color: AppColors.divider,
                 ),
-                _buildStat('Reviews', '5.0'),
+                _buildStat('健康评分', '85'),
               ],
             ),
             const SizedBox(height: 32),
             // My Pets section
-            _buildSectionHeader('My Pets', onTap: () {}),
+            _buildSectionHeader('我的宠物', onTap: () {}),
             const SizedBox(height: 16),
             _buildPetCard(
               name: 'Max',
-              breed: 'Golden Retriever',
-              age: '2 years old',
+              breed: '金毛',
+              age: '2岁',
             ),
             const SizedBox(height: 32),
             // Menu items
-            _buildSectionHeader('Account', onTap: null),
+            _buildSectionHeader('账户设置', onTap: null),
             const SizedBox(height: 16),
             _buildMenuItem(
               icon: Icons.person_outline,
-              title: 'Edit Profile',
+              title: '编辑资料',
               onTap: () {},
             ),
             _buildMenuItem(
               icon: Icons.pets,
-              title: 'Manage Pets',
+              title: '宠物管理',
               onTap: () {
                 Navigator.push(
                   context,
@@ -122,31 +122,31 @@ class ProfileScreen extends StatelessWidget {
             ),
             _buildMenuItem(
               icon: Icons.location_on_outlined,
-              title: 'Locations',
+              title: '位置管理',
               onTap: () {},
             ),
             const SizedBox(height: 24),
-            _buildSectionHeader('Preferences', onTap: null),
+            _buildSectionHeader('偏好设置', onTap: null),
             const SizedBox(height: 16),
             _buildMenuItem(
               icon: Icons.notifications_outlined,
-              title: 'Notifications',
+              title: '通知设置',
               onTap: () {},
             ),
             _buildMenuItem(
               icon: Icons.privacy_tip_outlined,
-              title: 'Privacy',
+              title: '隐私设置',
               onTap: () {},
             ),
             _buildMenuItem(
               icon: Icons.help_outline,
-              title: 'Help & Support',
+              title: '帮助与支持',
               onTap: () {},
             ),
             const SizedBox(height: 24),
             _buildMenuItem(
               icon: Icons.logout,
-              title: 'Logout',
+              title: '退出登录',
               onTap: () {},
               isDestructive: true,
             ),
@@ -194,7 +194,7 @@ class ProfileScreen extends StatelessWidget {
         if (onTap != null)
           TextButton(
             onPressed: onTap,
-            child: const Text('Add'),
+            child: const Text('添加'),
           ),
       ],
     );
