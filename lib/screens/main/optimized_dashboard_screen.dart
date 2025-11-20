@@ -138,14 +138,6 @@ class _OptimizedDashboardScreenState extends State<OptimizedDashboardScreen> {
                     child: _buildPetStatusCard(_myPets[0]),
                   ),
 
-                const SizedBox(height: 24),
-
-                // 次要区域：最近活动
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: _buildRecentActivities(),
-                ),
-
                 const SizedBox(height: 32),
               ],
             ),
@@ -671,85 +663,6 @@ class _OptimizedDashboardScreenState extends State<OptimizedDashboardScreen> {
   }
 
   // 最近活动
-  Widget _buildRecentActivities() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              '📝 最近活动',
-              style: TextStyle(
-                color: AppColors.textPrimary,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                if (_myPets.isNotEmpty) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => PetDiaryScreen(pet: _myPets[0]),
-                    ),
-                  );
-                }
-              },
-              child: const Text('查看全部'),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        _buildActivityItem('吃了早餐', '30分钟前', Icons.restaurant, AppColors.primary),
-        const SizedBox(height: 8),
-        _buildActivityItem('晨间散步', '2小时前', Icons.directions_walk, AppColors.success),
-        const SizedBox(height: 8),
-        _buildActivityItem('玩耍时间', '4小时前', Icons.sports_esports, AppColors.secondary),
-      ],
-    );
-  }
-
-  Widget _buildActivityItem(String title, String time, IconData icon, Color color) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Icon(icon, color: color, size: 18),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              title,
-              style: const TextStyle(
-                color: AppColors.textPrimary,
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          Text(
-            time,
-            style: const TextStyle(
-              color: AppColors.textSecondary,
-              fontSize: 12,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   // 我的宠物区域
   Widget _buildMyPetsSection() {

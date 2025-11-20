@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import 'optimized_dashboard_screen.dart';
 import '../records/records_screen.dart';
-import '../messages/messages_screen.dart';
 import '../profile/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -18,7 +17,6 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     const OptimizedDashboardScreen(),
     const RecordsScreen(),
-    const MessagesScreen(),
     const ProfileScreen(),
   ];
 
@@ -46,8 +44,7 @@ class _MainScreenState extends State<MainScreen> {
               children: [
                 _buildNavItem(Icons.dashboard_outlined, Icons.dashboard, '首页', 0),
                 _buildNavItem(Icons.article_outlined, Icons.article, '记录', 1),
-                _buildNavItem(Icons.chat_bubble_outline, Icons.chat_bubble, '消息', 2),
-                _buildNavItem(Icons.person_outline, Icons.person, '我的', 3),
+                _buildNavItem(Icons.person_outline, Icons.person, '我的', 2),
               ],
             ),
           ),

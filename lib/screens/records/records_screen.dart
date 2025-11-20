@@ -41,7 +41,7 @@ class _RecordsScreenState extends State<RecordsScreen> with SingleTickerProvider
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -69,10 +69,8 @@ class _RecordsScreenState extends State<RecordsScreen> with SingleTickerProvider
                 controller: _tabController,
                 children: [
                   _buildAllRecords(),
-                  _buildFeedingRecords(),
-                  _buildWalkRecords(),
-                  _buildHealthRecords(),
-                  _buildDiaryRecords(),
+                  _buildDailyRecords(),
+                  _buildHealthAndDiary(),
                 ],
               ),
             ),
@@ -181,10 +179,8 @@ class _RecordsScreenState extends State<RecordsScreen> with SingleTickerProvider
         dividerColor: Colors.transparent,
         tabs: const [
           Tab(text: '全部'),
-          Tab(text: '🍖 喂食'),
-          Tab(text: '🚶 散步'),
+          Tab(text: '🐾 日常'),
           Tab(text: '❤️ 健康'),
-          Tab(text: '📖 日记'),
         ],
       ),
     );
@@ -354,17 +350,33 @@ class _RecordsScreenState extends State<RecordsScreen> with SingleTickerProvider
     );
   }
 
-  // 喂食记录
-  Widget _buildFeedingRecords() {
+  // 日常记录（合并喂食+散步）
+  Widget _buildDailyRecords() {
     return ListView(
       padding: const EdgeInsets.all(20),
       children: [
-        _buildStatCard(
-          '本周喂食',
-          '14次',
-          '平均 2次/天',
-          Icons.restaurant,
-          AppColors.primary,
+        Row(
+          children: [
+            Expanded(
+              child: _buildStatCard(
+                '本周喂食',
+                '14次',
+                '2次/天',
+                Icons.restaurant,
+                AppColors.primary,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: _buildStatCard(
+                '本周散步',
+                '12次',
+                '6小时',
+                Icons.directions_walk,
+                AppColors.success,
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 20),
         _buildRecordItem(
@@ -376,43 +388,19 @@ class _RecordsScreenState extends State<RecordsScreen> with SingleTickerProvider
         ),
         const SizedBox(height: 12),
         _buildRecordItem(
-          '晚餐',
-          '狗粮 200g',
-          '昨天 18:00',
-          Icons.restaurant,
-          AppColors.primary,
-        ),
-        const SizedBox(height: 12),
-        _buildRecordItem(
-          '午餐',
-          '狗粮 150g + 蔬菜',
-          '昨天 12:00',
-          Icons.restaurant,
-          AppColors.primary,
-        ),
-      ],
-    );
-  }
-
-  // 散步记录
-  Widget _buildWalkRecords() {
-    return ListView(
-      padding: const EdgeInsets.all(20),
-      children: [
-        _buildStatCard(
-          '本周散步',
-          '12次',
-          '总计 6小时',
-          Icons.directions_walk,
-          AppColors.success,
-        ),
-        const SizedBox(height: 20),
-        _buildRecordItem(
           '晨间散步',
           '公园 30分钟',
           '2小时前',
           Icons.directions_walk,
           AppColors.success,
+        ),
+        const SizedBox(height: 12),
+        _buildRecordItem(
+          '晚餐',
+          '狗粮 200g',
+          '昨天 18:00',
+          Icons.restaurant,
+          AppColors.primary,
         ),
         const SizedBox(height: 12),
         _buildRecordItem(
@@ -426,17 +414,33 @@ class _RecordsScreenState extends State<RecordsScreen> with SingleTickerProvider
     );
   }
 
-  // 健康记录
-  Widget _buildHealthRecords() {
+  // 健康+日记（合并健康记录和日记）
+  Widget _buildHealthAndDiary() {
     return ListView(
       padding: const EdgeInsets.all(20),
       children: [
-        _buildStatCard(
-          '健康评分',
-          '85分',
-          '状态良好',
-          Icons.favorite,
-          AppColors.error,
+        Row(
+          children: [
+            Expanded(
+              child: _buildStatCard(
+                '健康评分',
+                '85分',
+                '状态良好',
+                Icons.favorite,
+                AppColors.error,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: _buildStatCard(
+                '本月日记',
+                '15篇',
+                '成长记录',
+                Icons.book,
+                AppColors.secondary,
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 20),
         _buildRecordItem(
@@ -447,43 +451,19 @@ class _RecordsScreenState extends State<RecordsScreen> with SingleTickerProvider
           AppColors.error,
         ),
         const SizedBox(height: 12),
+        _buildDiaryItem(
+          '开心的一天',
+          '今天Max心情特别好，在公园遇到了小伙伴，玩得很开心。回家后吃了最爱的鸡胸肉，满足地睡着了。',
+          '昨天 18:30',
+          '😊',
+        ),
+        const SizedBox(height: 12),
         _buildRecordItem(
           '疫苗接种',
           '狂犬病疫苗',
           '3天前',
           Icons.medical_services,
           AppColors.error,
-        ),
-        const SizedBox(height: 12),
-        _buildRecordItem(
-          '体检',
-          '常规体检 - 健康',
-          '1周前',
-          Icons.medical_information,
-          AppColors.error,
-        ),
-      ],
-    );
-  }
-
-  // 日记记录
-  Widget _buildDiaryRecords() {
-    return ListView(
-      padding: const EdgeInsets.all(20),
-      children: [
-        _buildStatCard(
-          '本月日记',
-          '15篇',
-          '记录美好时光',
-          Icons.book,
-          AppColors.secondary,
-        ),
-        const SizedBox(height: 20),
-        _buildDiaryItem(
-          '开心的一天',
-          '今天Max心情特别好，在公园遇到了小伙伴，玩得很开心。回家后吃了最爱的鸡胸肉，满足地睡着了。',
-          '昨天 18:30',
-          '😊',
         ),
         const SizedBox(height: 12),
         _buildDiaryItem(
