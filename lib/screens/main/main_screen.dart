@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
-import 'dashboard_screen.dart';
+import 'enhanced_dashboard_screen.dart';
 import 'home_screen.dart';
 import '../messages/messages_screen.dart';
 import '../profile/profile_screen.dart';
@@ -16,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    const DashboardScreen(),
+    const EnhancedDashboardScreen(),
     const HomeScreen(),
     const MessagesScreen(),
     const ProfileScreen(),
