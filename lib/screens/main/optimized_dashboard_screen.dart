@@ -101,16 +101,21 @@ class _OptimizedDashboardScreenState extends State<OptimizedDashboardScreen> {
               children: [
                 const SizedBox(height: 8),
 
-                // 🔥 核心区域1：紧急提醒（最显眼 - 红色/黄色警告）
+                // 🔥 核心区域1：我的宠物（横向滚动）- 最优先展示
+                _buildMyPetsSection(),
+
+                const SizedBox(height: 20),
+
+                // 🔥 核心区域2：紧急提醒（最显眼 - 红色/黄色警告）
                 if (_hasUrgentReminders())
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: _buildUrgentReminder(),
                   ),
 
-                const SizedBox(height: 20),
+                if (_hasUrgentReminders()) const SizedBox(height: 20),
 
-                // 🔥 核心区域2：今日任务（大卡片，一目了然）
+                // 🔥 核心区域3：今日任务（大卡片，一目了然）
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: _buildTodayTasksSection(),
@@ -118,7 +123,7 @@ class _OptimizedDashboardScreenState extends State<OptimizedDashboardScreen> {
 
                 const SizedBox(height: 24),
 
-                // 🔥 核心区域3：快速操作（最常用的3个功能 - 超大按钮）
+                // 🔥 核心区域4：快速操作（最常用的3个功能 - 超大按钮）
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: _buildQuickActionsSection(),
@@ -126,7 +131,7 @@ class _OptimizedDashboardScreenState extends State<OptimizedDashboardScreen> {
 
                 const SizedBox(height: 24),
 
-                // 🔥 核心区域4：宠物状态卡片（健康、心情、活力）
+                // 🔥 核心区域5：宠物状态卡片（健康、心情、活力）
                 if (_myPets.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -140,11 +145,6 @@ class _OptimizedDashboardScreenState extends State<OptimizedDashboardScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: _buildRecentActivities(),
                 ),
-
-                const SizedBox(height: 24),
-
-                // 次要区域：我的宠物（横向滚动）
-                _buildMyPetsSection(),
 
                 const SizedBox(height: 32),
               ],
